@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard - SecureLogin</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+</head>
+<body class="dashboard">
+    <div class="header">
+        <div>
+            <h1 class="welcome" id="userGreeting">Welcome</h1>
+        </div>
+        <button onclick="logout()" style="padding:10px 20px; background:#e74c3c; color:white; border:none; border-radius:8px; cursor:pointer;">
+            Logout
+        </button>
+    </div>
+
+    <h2>Your Profile</h2>
+    <p>Security Center • Recent Activity</p>
+
+    <script>
+        const user = JSON.parse(localStorage.getItem('currentUser'));
+        if (user) {
+            document.getElementById('userGreeting').textContent = `Welcome back, ${user.name.split(' ')[0]} `;
+        }
+
+        function logout() {
+            localStorage.removeItem('currentUser');
+            window.location.href = 'login.html';
+        }
+    </script>
+</body>
+</html>
